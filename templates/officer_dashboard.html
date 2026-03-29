@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="text-center text-dark mb-4"><i class="fa fa-user-shield"></i> Officer Dashboard</h2>
+
+<div class="table-responsive">
+<table class="table table-bordered table-hover">
+<thead class="table-dark">
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Status</th>
+<th>Update</th>
+</tr>
+</thead>
+<tbody>
+{% for c in complaints %}
+<tr>
+<td>{{ c.complaint_id }}</td>
+<td>{{ c.name }}</td>
+<td>
+{% if c.status == 'Pending' %}
+<span class="badge bg-secondary">{{ c.status }}</span>
+{% elif c.status == 'In Progress' %}
+<span class="badge bg-warning text-dark">{{ c.status }}</span>
+{% else %}
+<span class="badge bg-success">{{ c.status }}</span>
+{% endif %}
+</td>
+<td>
+<form method="post">{% csrf_token %}
+<input type="hidden" name="cid" value="{{ c.id }}">
+<select name="status" class="form-select mb-1">
+<option {% if c.status == 'Pending' %}selected{% endif %}>Pending</option>
+<option {% if c.status == 'In Progress' %}selected{% endif %}>In Progress</option>
+<option {% if c.status == 'Resolved' %}selected{% endif %}>Resolved</option>
+</select>
+<button class="btn btn-success btn-sm w-100">Update</button>
+</form>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+
+<a href="{% url 'logout' %}" class="btn btn-danger btn-custom mt-3"><i class="fa fa-sign-out-alt"></i> Logout</a>
+
+{% endblock %}
