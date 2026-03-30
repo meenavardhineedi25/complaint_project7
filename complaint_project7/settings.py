@@ -81,6 +81,12 @@ DATABASES = {
     }
 }
 
+# For production, use PostgreSQL if DATABASE_URL is set
+import dj_database_url
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if DATABASE_URL:
+    DATABASES['default'] = dj_database_url.config(default=DATABASE_URL)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
