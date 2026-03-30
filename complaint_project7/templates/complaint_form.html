@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card p-4 shadow-sm mx-auto" style="max-width:600px;">
+<h2 class="text-center text-primary mb-4"><i class="fa fa-file-alt"></i> Submit Complaint</h2>
+
+<form method="post">{% csrf_token %}
+<input class="form-control mb-3" name="name" placeholder="Name" required>
+<input class="form-control mb-3" name="village" placeholder="Village" required>
+<input class="form-control mb-3" name="category" placeholder="Complaint Category" required>
+<textarea class="form-control mb-3" name="description" placeholder="Description" rows="4" required></textarea>
+<input class="form-control mb-3" name="mobile" placeholder="Mobile Number" required>
+
+<button class="btn btn-primary btn-custom w-100"><i class="fa fa-paper-plane"></i> Submit Complaint</button>
+</form>
+</div>
+
+{% endblock %}

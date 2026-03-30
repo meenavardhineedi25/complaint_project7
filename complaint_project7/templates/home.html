@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="text-center mt-5">
+  <h1 class="text-primary mb-4">Welcome to Complaint Portal</h1>
+  <img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png" width="150" class="mb-4">
+</div>
+
+<div class="row text-center">
+  <div class="col-md-6 mb-3">
+    <div class="card p-4">
+      <i class="fa fa-plus fa-3x text-success mb-2"></i>
+      <h4>Submit Complaint</h4>
+      <p>Register your complaint easily online</p>
+      <a href="{% url 'file' %}" class="btn btn-success btn-custom">File Complaint</a>
+    </div>
+  </div>
+  <div class="col-md-6 mb-3">
+    <div class="card p-4">
+      <i class="fa fa-search fa-3x text-warning mb-2"></i>
+      <h4>Track Status</h4>
+      <p>Check the status of your submitted complaint</p>
+      <a href="{% url 'track' %}" class="btn btn-warning btn-custom">Track</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
